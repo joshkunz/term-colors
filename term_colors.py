@@ -18,7 +18,7 @@ class Style(object):
     italic = 3
     negative = 7
 
-def begin_color(color_, base=Base.foreground, styles=[]):
+def begin_color(color_, *styles, base=Base.foreground):
     style = ""
     for style_ in styles:
         style += str(style_) + ";"
@@ -28,8 +28,8 @@ def begin_color(color_, base=Base.foreground, styles=[]):
 def end_color():
     return "\x1B[0m"
 
-def color(s, color_, base=Base.foreground, styles=[]):
-    return begin_color(color_, base, styles) + s + end_color()
+def color(s, color_, *styles, base=Base.foreground):
+    return begin_color(color_, *styles, base=base) + s + end_color()
 
 # Copyright (c) 2016 Josh Kunz
 # 
